@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+        $("#type").click(function(){
+        $("p:nth-of-type(2)").css("background-color","pink");//dispay p's only in div
+        });
+
+        $("#child").click(function(){
+        $("p:nth-child(2)").css("background-color","pink");//dispay p's only in div
+        });
+});
+</script>
+</head>
+<body>
+<div>
+    <p>This is first child inside div</p>
+    <p>thsi is p <div><p>this is p inside div</p></div></p>
+    <p>this is  second p</p>
+    <p>this is  2nd also child inside div</p>
+    <p>this is 3rd  child inside div</p>
+    <p>this is last child inside div</p>
+</div>
+<hr/>
+<form>
+    <p>This is  0p child of form </p>
+    <p>This is  1p child of form </p>
+    <p>This is  2p child of form </p>
+    <p>This is  3p child of form </p>
+    <p>This is  4p child of form </p>
+</form>
+<button id="type">type of</button>
+<button id="child">child of </button>
+</body>
+</html>
