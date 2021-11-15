@@ -12,30 +12,31 @@ namespace DalProject
     {
        public bool Check(BalLayer ba)
         {
-            SqlConnection cn = new SqlConnection("server=desktop-7gh9mjq\\sqlexpress;Integrated Security=true;database=OnlineShopping");
-            string s = "[dbo].[sp_AdminLogin]";
+            SqlConnection cn = new SqlConnection("Data Source=desktop-7gh9mjq\\sqlexpress;Integrated Security=true;database=OnlineShopping");
+            string s = "Select[dbo].[AdminLoginFunction](@p_aid,@p_pwd)";
             SqlCommand cmd = new SqlCommand(s,cn);
-            cmd.Parameters.AddWithValue("@aid",ba.AdminId); 
-            cmd.Parameters.AddWithValue("@pswd",ba.AdminPassword);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@p_aid",ba.AdminId); 
+            cmd.Parameters.AddWithValue("@p_pwd",ba.AdminPassword);
+            
             cn.Open();
             SqlDataReader rdr = cmd.ExecuteReader(); 
             rdr.Read(); 
-            bool ans = false; //array format //dr[0] if (Convert.ToInt32(rdr
-            if (Convert.ToInt32(rdr[1]) == 1)
+            bool ans = false; 
+            if (Convert.ToInt32(rdr[0]) == 1)
             {
-                Console.WriteLine("u r welcome"); 
+                //Console.WriteLine("u r welcome"); 
                 ans = true; 
             }
             else 
             { 
-                Console.WriteLine("bye"); 
+                //Console.WriteLine("bye"); 
                 ans = false; 
             }
             cn.Close(); 
             cn.Dispose();
             return ans;
         }
+       
         
     }
 }
